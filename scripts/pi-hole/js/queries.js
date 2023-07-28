@@ -370,12 +370,19 @@ $(function () {
     ],
     initComplete: function () {
       var api = this.api();
+      var oldSelection = "";
 
       // Query type IPv4 / IPv6
       api
         .$("td:eq(1)")
+        .on("mousedown", function (event) {
+          oldSelection = window.getSelection().toString();
+        })
         .on("click", function (event) {
-          addColumnFilter(event, 1, this.textContent);
+          let newSelection = window.getSelection().toString();
+          if (oldSelection == newSelection) {
+            addColumnFilter(event, 1, this.textContent);
+          }
         })
         .on(
           "hover",
@@ -390,8 +397,14 @@ $(function () {
       // Domain
       api
         .$("td:eq(2)")
+        .on("mousedown", function (event) {
+          oldSelection = window.getSelection().toString();
+        })
         .on("click", function (event) {
-          addColumnFilter(event, 2, this.textContent.split("\n")[0]);
+          let newSelection = window.getSelection().toString();
+          if (oldSelection == newSelection) {
+            addColumnFilter(event, 2, this.textContent.split("\n")[0]);
+          }
         })
         .on(
           "hover",
@@ -406,8 +419,14 @@ $(function () {
       // Client
       api
         .$("td:eq(3)")
+        .on("mousedown", function (event) {
+          oldSelection = window.getSelection().toString();
+        })
         .on("click", function (event) {
-          addColumnFilter(event, 3, this.textContent);
+          let newSelection = window.getSelection().toString();
+          if (oldSelection == newSelection) {
+            addColumnFilter(event, 3, this.textContent);
+          }
         })
         .on(
           "hover",
@@ -422,10 +441,16 @@ $(function () {
       // Status
       api
         .$("td:eq(4)")
+        .on("mousedown", function (event) {
+          oldSelection = window.getSelection().toString();
+        })
         .on("click", function (event) {
           var id = this.children.id.value;
           var text = this.textContent;
-          addColumnFilter(event, 4, id + "#" + text);
+          let newSelection = window.getSelection().toString();
+          if (oldSelection == newSelection) {
+            addColumnFilter(event, 4, id + "#" + text);
+          }
         })
         .on(
           "hover",
@@ -440,10 +465,16 @@ $(function () {
       // Reply type
       api
         .$("td:eq(5)")
+        .on("mousedown", function (event) {
+          oldSelection = window.getSelection().toString();
+        })
         .on("click", function (event) {
           var id = this.children.id.value;
           var text = this.textContent.split(" ")[0];
-          addColumnFilter(event, 5, id + "#" + text);
+          let newSelection = window.getSelection().toString();
+          if (oldSelection == newSelection) {
+            addColumnFilter(event, 5, id + "#" + text);
+          }
         })
         .on(
           "hover",
